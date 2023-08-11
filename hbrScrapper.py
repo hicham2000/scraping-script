@@ -22,6 +22,7 @@ owners = []
 dates = []
 prices = []
 links = []
+description = []
 
 
 
@@ -77,14 +78,27 @@ for article in Articles:
 
 print(i)
 
+for ele in links:
+    driver.get(ele)
+    print(ele)
+    try:
+        Des = driver.find_element(By.CLASS_NAME, "productView-description")
+        description.append(Des.text)
 
+    except Exception as e:
+        try:
+            Des = driver.find_element(By.XPATH, "//div[@js-target='article-content-flex2019']")
+            description.append(Des.text)
+        except Exception as e:
+            description.append("N/A")
 data = {
         "Title": titles,
         "Category": categories,
         "Owner": owners,
         "Date": dates,
         "Price": prices,
-        "Link": links
+        "Link": links,
+        "description": description
     }
 df = pd.DataFrame(data)
 # Export the DataFrame to an Excel file
