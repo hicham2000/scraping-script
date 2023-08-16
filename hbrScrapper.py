@@ -11,9 +11,9 @@ chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 
 
-driver.get("https://hbr.org/search?term=connection&loaded=41")
+#driver.get("https://hbr.org/search?term=connection&loaded=41")
 
-#driver.get("https://hbr.org/search?term=connection")
+driver.get("https://hbr.org/search?search_type=&term=listening&term=&loaded=28")
 
 
 titles = []
@@ -102,4 +102,4 @@ data = {
     }
 df = pd.DataFrame(data)
 # Export the DataFrame to an Excel file
-df.to_excel("HbrArticles.xlsx", index=False)
+df.to_excel("HbrArticles_listening.xlsx", index=False)
